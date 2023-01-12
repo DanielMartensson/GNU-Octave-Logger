@@ -34,6 +34,7 @@ function retval = GNU_Octave_Logger_thread(wnd)
   analogOutPlot = [];
   k = 0;
   m = 0;
+  h = 0;
 
   % Never ending loop
   while(true)
@@ -51,6 +52,7 @@ function retval = GNU_Octave_Logger_thread(wnd)
 
         % Focus on plot
         axis(wnd.plot);
+        h = plot(rand(2));
         plotIndex = 1;
         analogInPlot = [];
         analogOutPlot = [];
@@ -88,7 +90,8 @@ function retval = GNU_Octave_Logger_thread(wnd)
         analogInPlot = [analogInPlot analogIn];
         analogOutPlot = [analogOutPlot analogOut];
         L = 1:length(analogOutPlot);
-        plot(L, analogInPlot, L, analogOutPlot);
+        set(h, {'YData'}, {analogInPlot; analogOutPlot});
+        set(h, {'XData'}, {L; L});
         grid on
         legend('Analog in', 'Analog out');
         if(plotIndex >= viewSamples)
