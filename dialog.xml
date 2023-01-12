@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dialog Color="[0.941 0.941 0.941]" HPosition="center" Name="GNU_Octave_Logger" Position="[1 265 1154 814]" Resize="off" VPosition="center" windowStyle="normal">
+    <GlobalSrc>%
+% The source code writed here will be executed when
+% windows load. Work like 'onLoad' event of other languages.
+%
+</GlobalSrc>
+    <uiControl class="groupPanel" BackgroundColor="[0.941 0.941 0.941]" BorderWidth="1" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" Name="connectionGroupPanel" Position="[25 20 260 316]" Title="Connection" TitlePosition="lefttop">
+        <ContainerSrc/>
+        <uiControl class="buttonCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Name="connectToArduino" Position="[16 215 223 44]" String="Connect to Arduino UNO" TooltipString="">% This code will be executed when user click the button control.
+% As default, all events are deactivated, to activate must set the
+% propertie 'generateCallback' from the properties editor
+
+% Get selected com port
+index = get(GNU_Octave_Logger.arduinoPortsComboBox, 'Value');
+comports = get(GNU_Octave_Logger.arduinoPortsComboBox, 'String');
+
+% Connect
+global selectedArduino;
+selectedArduino = arduino(comports{index});</uiControl>
+        <uiControl class="buttonCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Name="scanForArduinoPorts" Position="[15 95 226 44]" String="Scan for Arduino UNO ports" TooltipString="">% This code will be executed when user click the button control.
+% As default, all events are deactivated, to activate must set the
+% propertie 'generateCallback' from the properties editor
+
+% Load arduino
+pkg load instrument-control
+pkg load arduino
+
+% Scan ports
+arduinos = scanForArduinos;
+[m, n] = size(arduinos);
+
+% Collect them
+names = {};
+for i = 1:n
+   portName = arduinos{i}.port;
+   names{i} = portName;
+end
+
+% Set them
+set(GNU_Octave_Logger.arduinoPortsComboBox, 'String', names);</uiControl>
+        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="arduinoPortsLabel" Position="[20 150 142 19]" String="Arduino UNO ports:" TooltipString=""/>
+        <uiControl class="cmbCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="bold" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" Name="arduinoPortsComboBox" Position="[15 180 224 25]" String="" TooltipString=""/>
+        <uiControl class="buttonCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Name="installArduinoUNOfirmware" Position="[17 35 225 45]" String="Install Arduino UNO firmware" TooltipString="">% This code will be executed when user click the button control.
+% As default, all events are deactivated, to activate must set the
+% propertie 'generateCallback' from the properties editor
+
+% Install instrument control and load it
+pkg load instrument-control
+pkg load arduino
+
+% Setup firmware
+helpdlg('Remember to have Arduino IDE installed. This GNU Octave Logger is tested with Arduino IDE 1.8.19.', 'Setup');
+arduinosetup()</uiControl>
+        <uiControl class="buttonCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Name="testLEDPin13" Position="[20 270 217 35]" String="Test LED Pin 13" TooltipString="">% Get button state
+global buttonState = 0;
+
+% Toggle LED 13
+global selectedArduino;
+writeDigitalPin(selectedArduino, 'D13', buttonState);
+buttonState = !buttonState;</uiControl>
+    </uiControl>
+    <uiControl class="groupPanel" BackgroundColor="[0.941 0.941 0.941]" BorderWidth="1" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" Name="fileHandlerGroupPanel" Position="[27 340 258 147]" Title="File handler" TitlePosition="lefttop">
+        <ContainerSrc/>
+        <uiControl class="buttonCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Name="createNewFile" Position="[15 30 221 31]" String="Create new file" TooltipString="">% This code will be executed when user click the button control.
+% As default, all events are deactivated, to activate must set the
+% propertie 'generateCallback' from the properties editor
+
+% Get new file 
+[fname, fpath] = uiputfile(&quot;*.csv&quot;);
+
+% Save file path
+global filePath;
+filePath = strcat(fpath, fname);
+set(GNU_Octave_Logger.filePath, 'String', filePath);
+
+% Create file 
+fid = fopen(filePath, 'w');
+fclose(fid);</uiControl>
+        <uiControl class="buttonCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Name="openExcistingFile" Position="[15 65 220 30]" String="Open existing file" TooltipString="">% This code will be executed when user click the button control.
+% As default, all events are deactivated, to activate must set the
+% propertie 'generateCallback' from the properties editor
+
+% Select existing file
+[fname, fpath] = uigetfile(&quot;*.csv&quot;);
+
+% Save it
+global filePath;
+filePath = strcat(fpath, fname);
+set(GNU_Octave_Logger.filePath, 'String', filePath);
+</uiControl>
+        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="filePath" Position="[20 110 232 19]" String="File path:" TooltipString=""/>
+    </uiControl>
+    <uiControl class="groupPanel" BackgroundColor="[0.941 0.941 0.941]" BorderWidth="1" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" Name="loggingSettingsGroupPanel" Position="[27 490 258 270]" Title="Logging settings" TitlePosition="lefttop">
+        <ContainerSrc/>
+        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="analogInputLabel" Position="[15 30 95 19]" String="Analog input:" TooltipString=""/>
+        <uiControl class="cmbCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Name="analogInputPinComboBox" Position="[150 25 80 25]" String="A0|A1|A2|A3|A4|A5" TooltipString="">global analogInputPin;
+index = get(GNU_Octave_Logger.analogInputPinComboBox, 'Value');
+analogInputPins = get(GNU_Octave_Logger.analogInputPinComboBox, 'String');
+analogInputPins = strsplit(analogInputPins, '|');
+analogInputPin = analogInputPins{index};</uiControl>
+        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="sampleTimeLabel" Position="[15 160 130 19]" String="Sample time [ms]:" TooltipString=""/>
+        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="analogOutputPinLabel" Position="[15 125 131 19]" String="Analog output pin:" TooltipString=""/>
+        <uiControl class="cmbCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Name="analogOutputPinComboBox" Position="[150 120 80 25]" String="D11|D10|D9|D6|D5|D3" TooltipString="">global analogOutputPin;
+index = get(GNU_Octave_Logger.analogOutputPinComboBox, 'Value');
+analogOutputPins = get(GNU_Octave_Logger.analogOutputPinComboBox, 'String');
+analogOutputPins = strsplit(analogOutputPins, '|');
+analogOutputPin = analogOutputPins{index};</uiControl>
+        <uiControl class="cmbCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Name="sampleTimeComboBox" Position="[150 155 80 25]" String="10|50|100|150|250|500|1000|1500|2000|5000|10000" TooltipString="">global sampleTime;
+index = get(GNU_Octave_Logger.sampleTimeComboBox, 'Value');
+sampleTimes = get(GNU_Octave_Logger.sampleTimeComboBox, 'String');
+sampleTimes = strsplit(sampleTimes, '|');
+sampleTime = str2num(sampleTimes{index});</uiControl>
+        <uiControl class="buttonCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.027 0.976 0.027]" GenerateCallBack="true" Name="stopLogging" Position="[15 225 114 30]" String="Stop logging" TooltipString="">% This code will be executed when user click the button control.
+% As default, all events are deactivated, to activate must set the
+% propertie 'generateCallback' from the properties editor
+
+% Set global value 
+global isLogging;
+isLogging = 0;
+
+% Change color
+set(GNU_Octave_Logger.stopLogging, 'ForegroundColor', [0.027 0.976 0.027]);
+set(GNU_Octave_Logger.startLogging, 'ForegroundColor',[0.667 0.000 0.000]);</uiControl>
+        <uiControl class="buttonCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.667 0.000 0.000]" GenerateCallBack="true" Name="startLogging" Position="[130 225 109 30]" String="Start logging" TooltipString="">% This code will be executed when user click the button control.
+% As default, all events are deactivated, to activate must set the
+% propertie 'generateCallback' from the properties editor
+
+global isLogging;
+isLogging = 1;
+
+% Change color
+set(GNU_Octave_Logger.stopLogging, 'ForegroundColor', [0.667 0.000 0.000]);
+set(GNU_Octave_Logger.startLogging, 'ForegroundColor', [0.027 0.976 0.027]);</uiControl>
+        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="viewSamples" Position="[15 195 104 19]" String="View samples:" TooltipString=""/>
+        <uiControl class="cmbCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Name="viewSamplesComboBox" Position="[150 190 79 25]" String="10|20|30|40|50|100|250|500|1000" TooltipString="">global viewSamples;
+index = get(GNU_Octave_Logger.viewSamplesComboBox, 'Value');
+samples = get(GNU_Octave_Logger.viewSamplesComboBox, 'String');
+samples = strsplit(samples, '|');
+viewSamples = str2num(samples{index});</uiControl>
+        <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" HorizontalAlignment="left" Name="minCalibrationEdit" Position="[150 60 80 22]" String="" TooltipString="">% This code will be executed when the control lost focus and text has 
+% been changed or when press the &quot;enter&quot; key.
+% As default, all events are deactivated, to activate must set the
+% propertie 'have callback' from the properties editor
+
+global minValueCalibration;
+minValueCalibration = str2num(get(GNU_Octave_Logger.minCalibrationEdit, 'String'));</uiControl>
+        <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" HorizontalAlignment="left" Name="maxCalibrationEdit" Position="[150 90 78 22]" String="" TooltipString="">% This code will be executed when the control lost focus and text has 
+% been changed or when press the &quot;enter&quot; key.
+% As default, all events are deactivated, to activate must set the
+% propertie 'have callback' from the properties editor
+
+global maxValueCalibration;
+maxValueCalibration = str2num(get(GNU_Octave_Logger.maxCalibrationEdit, 'String'));</uiControl>
+        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="minCalibrationLabel" Position="[15 65 111 19]" String="Min calibration:" TooltipString=""/>
+        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="maxCalibrationLabel" Position="[15 95 114 19]" String="Max calibration:" TooltipString=""/>
+    </uiControl>
+    <uiControl class="imgCtrl" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" Name="plot" Position="[321 30 814 695]"/>
+    <uiControl class="sliderCtrl" BackgroundColor="[0.941 0.941 0.941]" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Max="255" Min="0" Name="analogOutputValueSlider" Position="[452 731 679 32]" TooltipString="" Value="0">% This code will be executed when user change the value of slider.
+% As default, all events are deactivated, to activate must set the
+% propertie 'generateCallbck' from the properties editor
+
+global analogOutputValueSlider;
+analogOutputValueSlider = get(GNU_Octave_Logger.analogOutputValueSlider, 'Value');</uiControl>
+    <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="analogOutputValue" Position="[300 740 146 19]" String="Analog output value:" TooltipString=""/>
+</dialog>
