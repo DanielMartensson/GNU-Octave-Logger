@@ -89,7 +89,7 @@ global filePath;
 filePath = strcat(fpath, fname);
 set(GNU_Octave_Logger.filePath, 'String', filePath);
 </uiControl>
-        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="filePath" Position="[20 110 232 19]" String="File path:" TooltipString=""/>
+        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="filePath" Position="[20 110 234 19]" String="File path:" TooltipString=""/>
     </uiControl>
     <uiControl class="groupPanel" BackgroundColor="[0.941 0.941 0.941]" BorderWidth="1" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" Name="loggingSettingsGroupPanel" Position="[27 490 258 270]" Title="Logging settings" TitlePosition="lefttop">
         <ContainerSrc/>
@@ -106,7 +106,7 @@ index = get(GNU_Octave_Logger.analogOutputPinComboBox, 'Value');
 analogOutputPins = get(GNU_Octave_Logger.analogOutputPinComboBox, 'String');
 analogOutputPins = strsplit(analogOutputPins, '|');
 analogOutputPin = analogOutputPins{index};</uiControl>
-        <uiControl class="cmbCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Name="sampleTimeComboBox" Position="[150 155 80 25]" String="10|50|100|150|250|500|1000|1500|2000|5000|10000" TooltipString="">global sampleTime;
+        <uiControl class="cmbCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Name="sampleTimeComboBox" Position="[150 155 80 25]" String="100|150|250|500|1000|1500|2000|5000|10000" TooltipString="">global sampleTime;
 index = get(GNU_Octave_Logger.sampleTimeComboBox, 'Value');
 sampleTimes = get(GNU_Octave_Logger.sampleTimeComboBox, 'String');
 sampleTimes = strsplit(sampleTimes, '|');

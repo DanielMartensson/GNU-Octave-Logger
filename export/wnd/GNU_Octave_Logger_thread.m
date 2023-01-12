@@ -11,7 +11,7 @@ function retval = GNU_Octave_Logger_thread(wnd)
   global viewSamples;
   global minValueCalibration;
   global maxValueCalibration;
-  sampleTime = 10;
+  sampleTime = 100;
   analogOutputPin = 'D11';
   analogInputPin = 'A0';
   isLogging = 0;
@@ -53,6 +53,7 @@ function retval = GNU_Octave_Logger_thread(wnd)
         % Focus on plot
         axis(wnd.plot);
         h = plot(rand(2));
+        grid on
         plotIndex = 1;
         analogInPlot = [];
         analogOutPlot = [];
@@ -90,10 +91,13 @@ function retval = GNU_Octave_Logger_thread(wnd)
         analogInPlot = [analogInPlot analogIn];
         analogOutPlot = [analogOutPlot analogOut];
         L = 1:length(analogOutPlot);
+
+        %axis(wnd.plot);
+        %delete(h);
+        %h = plot(L, analogInPlot, L, analogOutPlot);
         set(h, {'YData'}, {analogInPlot; analogOutPlot});
         set(h, {'XData'}, {L; L});
-        grid on
-        legend('Analog in', 'Analog out');
+        legend(h, 'Analog in', 'Analog out');
         if(plotIndex >= viewSamples)
           % Remove
           analogInPlot(1) = [];
@@ -121,4 +125,3 @@ function retval = GNU_Octave_Logger_thread(wnd)
     pause(0.001)
   end
 endfunction
-
