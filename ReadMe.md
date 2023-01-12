@@ -33,4 +33,4 @@ Two of these packages can be installed from the `command window` of GNU Octave w
 
 # Picture
 
-![a]()
+![a](https://github.com/DanielMartensson/GNU-Octave-Logger/blob/main/img/Snapshot.png?raw=true)
