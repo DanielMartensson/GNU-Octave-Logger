@@ -47,7 +47,7 @@ function retval = GNU_Octave_Logger_thread(wnd)
       if(isFirstLoop == 1)
         % Create file
         fid = fopen(filePath, 'w');
-        header = sprintf("time stamp, sample time, analog in, analog out\n");
+        header = sprintf("time_stamp,sample_time,analog_in,analog_out\n");
         fwrite(fid, header);
 
         % Focus on plot
@@ -82,7 +82,7 @@ function retval = GNU_Octave_Logger_thread(wnd)
 
         % Combine them all
         analogOut = floor(analogOutputValueSlider);
-        row = sprintf("%s,%s,%s,%s\n", timeStamp, num2str(sampleTime), num2str(analogIn), num2str(analogOut));
+        row = sprintf("'%s',%s,%s,%s\n", timeStamp, num2str(sampleTime), num2str(analogIn), num2str(analogOut));
 
         % Write
         fwrite(fid, row);
@@ -95,9 +95,14 @@ function retval = GNU_Octave_Logger_thread(wnd)
         %axis(wnd.plot);
         %delete(h);
         %h = plot(L, analogInPlot, L, analogOutPlot);
-        set(h, {'YData'}, {analogInPlot; analogOutPlot});
-        set(h, {'XData'}, {L; L});
-        legend(h, 'Analog in', 'Analog out');
+        try
+          set(h, {'YData'}, {analogInPlot; analogOutPlot});
+          set(h, {'XData'}, {L; L});
+          legend(h, 'Analog in', 'Analog out');
+        catch
+          disp('Could not plot. Try with lower sample time');
+        end_try_catch
+
         if(plotIndex >= viewSamples)
           % Remove
           analogInPlot(1) = [];
@@ -105,6 +110,7 @@ function retval = GNU_Octave_Logger_thread(wnd)
         else
           plotIndex = plotIndex + 1;
         end
+        disp('active logging');
 
         % Reset counter
         counter = 0;
@@ -119,6 +125,7 @@ function retval = GNU_Octave_Logger_thread(wnd)
     if(fid != 0)
       fclose(fid);
       fid = 0;
+      disp('deactive logging');
     end
 
     % Without this, it's difficult to start the thread
