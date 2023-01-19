@@ -43,7 +43,10 @@ function retval = GNU_Octave_Logger_thread(wnd)
 
     % Do logging
     while(isLogging == 1)
+      disp(sprintf("isLogging = %i", isLogging));
       % Create file
+      disp(sprintf("isFirstLoop = %i", isFirstLoop));
+
       if(isFirstLoop == 1)
         % Create file
         fid = fopen(filePath, 'w');
@@ -71,13 +74,16 @@ function retval = GNU_Octave_Logger_thread(wnd)
         % Write a sample
 
         % Get time stamp
+        disp('local time')
         t = localtime(time());
         timeStamp = sprintf('%i-%i-%iT%i:%i:%i.%iZ', t.year+1900, t.mon+1, t.mday, t.hour, t.min, t.sec, t.usec');
 
         % Get measurement
+        disp('analog in...')
         analogIn = k*double(readAnalogPin(selectedArduino, analogInputPin)) + m;
 
         % Get control signal
+        disp('analog out')
         writePWMDutyCycle(selectedArduino, analogOutputPin, analogOutputValueSlider/255.0);
 
         % Combine them all
@@ -96,7 +102,9 @@ function retval = GNU_Octave_Logger_thread(wnd)
         %delete(h);
         %h = plot(L, analogInPlot, L, analogOutPlot);
         try
+          disp('plot analog in')
           set(h, {'YData'}, {analogInPlot; analogOutPlot});
+          disp('plot analog out')
           set(h, {'XData'}, {L; L});
           legend(h, 'Analog in', 'Analog out');
         catch

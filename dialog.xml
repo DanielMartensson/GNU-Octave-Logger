@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dialog Color="[0.941 0.941 0.941]" HPosition="center" Name="GNU_Octave_Logger" Position="[1 265 1154 814]" Resize="off" VPosition="center" windowStyle="normal">
+<dialog Color="[0.941 0.941 0.941]" HPosition="center" Name="GNU_Octave_Logger" Position="[1 265 1154 814]" Resize="on" VPosition="center" windowStyle="normal">
     <GlobalSrc>%
 % The source code writed here will be executed when
 % windows load. Work like 'onLoad' event of other languages.
@@ -89,7 +89,7 @@ global filePath;
 filePath = strcat(fpath, fname);
 set(GNU_Octave_Logger.filePath, 'String', filePath);
 </uiControl>
-        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="filePath" Position="[20 110 234 19]" String="File path:" TooltipString=""/>
+        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="filePath" Position="[20 110 67 19]" String="File path:" TooltipString=""/>
     </uiControl>
     <uiControl class="groupPanel" BackgroundColor="[0.941 0.941 0.941]" BorderWidth="1" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" Name="loggingSettingsGroupPanel" Position="[27 490 258 270]" Title="Logging settings" TitlePosition="lefttop">
         <ContainerSrc/>
