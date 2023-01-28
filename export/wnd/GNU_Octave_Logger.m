@@ -7,5 +7,4 @@
 function wnd = GNU_Octave_Logger()
   GNU_Octave_Logger_def;
   wnd = show_GNU_Octave_Logger();
-  GNU_Octave_Logger_thread(wnd);
 end
