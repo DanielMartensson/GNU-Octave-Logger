@@ -313,7 +313,6 @@ h2 = plot(mainDlg.Image_1, randn(1), randn(1), '-b');
 legend(mainDlg.Image_1, 'Analog in', 'Analog out');
 
 % Initial data for the plot
-plotIndex = 1;
 analogInPlot =[];
 analogOutPlot = [];
 
@@ -347,7 +346,8 @@ while (isLogging == 1)
   % Store a value
   analogInPlot = [analogInPlot analogIn];
   analogOutPlot = [analogOutPlot analogOut];
-  L = 1:length(analogOutPlot);
+  lengthOfSamples = length(analogOutPlot);
+  L = 1:lengthOfSamples;
 
   % Update plot
   set(h1, 'YData', analogInPlot);
@@ -356,12 +356,11 @@ while (isLogging == 1)
   set(h2, 'XData', L);
   grid('on');
 
-  if(plotIndex >= viewSamples)
+  if(lengthOfSamples > viewSamples)
     % Remove
-    analogInPlot(1) = [];
-    analogOutPlot(1) = [];
-  else
-    plotIndex = plotIndex + 1;
+    removeIndex = 1:(lengthOfSamples - viewSamples);
+    analogInPlot(removeIndex) = [];
+    analogOutPlot(removeIndex) = [];
   end
 
   % Sample time
