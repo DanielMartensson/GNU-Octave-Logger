@@ -27,10 +27,25 @@ Two of these packages can be installed from the `command window` of GNU Octave w
 
 # How to run the software
 
-1. Install GNU Octave 
-2. Download this repository
-3. Inside the folder `export/wnd`, then run the `GNU_Octave_Logger.m` file from the `command window`.
+1. Install GNU Octave.
+2. Download this repository and extract it.
+3. Run the `GNU_Octave_Logger.m` file from the `command window`.
 
 # Picture
 
+Processing measurements 
+
 ![a](https://github.com/DanielMartensson/GNU-Octave-Logger/blob/main/img/Snapshot.png?raw=true)
+
+Result
+
+```matlab
+>> x = dlmread('Measure.csv');
+>> plot(x(:, 3)) % Analog in column
+>> hold on
+>> plot(x(:, 4)) % Analog out column
+>> legend('Analog in', 'Analog out')
+>> grid on
+```
+
+![a](https://github.com/DanielMartensson/GNU-Octave-Logger/blob/main/img/Result.png?raw=true)
