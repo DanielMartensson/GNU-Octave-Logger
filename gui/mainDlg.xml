@@ -97,7 +97,7 @@ fclose(fid);</uiControl>
 global filePath;
 filePath = strcat(fpath, fname);
 set(mainDlg.filePath, 'String', filePath);</uiControl>
-        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="filePath" Position="[20 70 67 19]" String="File path:" TooltipString=""/>
+        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="filePath" Position="[20 70 813 19]" String="File path:" TooltipString=""/>
     </uiControl>
     <uiControl class="groupPanel" BackgroundColor="[0.937 0.937 0.937]" BorderWidth="1" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" Name="loggingSettingsGroupPanel" Position="[27 445 840 93]" Title="Logging settings" TitlePosition="lefttop">
         <ContainerSrc/>
