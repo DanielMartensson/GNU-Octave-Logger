@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dialog Color="[0.937 0.937 0.937]" HPosition="default" Name="mainDlg" Position="[0 456 889 624]" Resize="on" VPosition="default" windowStyle="normal">
+<dialog Color="[0.937 0.937 0.937]" HPosition="default" Name="mainDlg" Position="[0 453 1097 627]" Resize="on" VPosition="default" windowStyle="normal">
     <GlobalSrc>%
 % The source code written here will be executed when
 % windows load. Works like 'onLoad' event of other languages.
@@ -9,8 +9,8 @@ set(mainDlg.figure, 'Name','GNU Octave Logger','NumberTitle','off');
 
 
 </GlobalSrc>
-    <uiControl class="imgCtrl" FontAngle="normal" FontName="Ubuntu" FontSize="11" FontWeight="normal" Name="Image_1" Position="[320 30 544 300]"/>
-    <uiControl class="groupPanel" BackgroundColor="[0.937 0.937 0.937]" BorderWidth="1" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" Name="connectionGroupPanel" Position="[25 20 260 316]" Title="Connection" TitlePosition="lefttop">
+    <uiControl class="imgCtrl" FontAngle="normal" FontName="Ubuntu" FontSize="11" FontWeight="normal" Name="Image_1" Position="[320 25 755 300]"/>
+    <uiControl class="groupPanel" BackgroundColor="[0.937 0.937 0.937]" BorderWidth="1" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" Name="connectionGroupPanel" Position="[25 15 260 316]" Title="Connection" TitlePosition="lefttop">
         <ContainerSrc/>
         <uiControl class="buttonCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Name="installArduinoUNOfirmware" Position="[17 35 225 45]" String="Install Arduino UNO firmware" TooltipString="">% This code will be executed when user click the button control.
 % As default, all events are deactivated, to activate must set the
@@ -69,7 +69,7 @@ global selectedArduino;
 writeDigitalPin(selectedArduino, 'D13', buttonState);
 buttonState = !buttonState;</uiControl>
     </uiControl>
-    <uiControl class="groupPanel" BackgroundColor="[0.937 0.937 0.937]" BorderWidth="1" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" Name="fileHandlerGroupPanel" Position="[27 352 838 93]" Title="File handler" TitlePosition="lefttop">
+    <uiControl class="groupPanel" BackgroundColor="[0.937 0.937 0.937]" BorderWidth="1" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" Name="fileHandlerGroupPanel" Position="[27 347 1046 93]" Title="File handler" TitlePosition="lefttop">
         <ContainerSrc/>
         <uiControl class="buttonCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Name="createNewFile" Position="[15 30 221 31]" String="Create new file" TooltipString="">% This code will be executed when user click the button control.
 % As default, all events are deactivated, to activate must set the
@@ -97,51 +97,51 @@ fclose(fid);</uiControl>
 global filePath;
 filePath = strcat(fpath, fname);
 set(mainDlg.filePath, 'String', filePath);</uiControl>
-        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="filePath" Position="[20 70 815 19]" String="File path:" TooltipString=""/>
+        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="filePath" Position="[25 70 1015 19]" String="File path:" TooltipString=""/>
     </uiControl>
-    <uiControl class="groupPanel" BackgroundColor="[0.937 0.937 0.937]" BorderWidth="1" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" Name="loggingSettingsGroupPanel" Position="[27 445 840 93]" Title="Logging settings" TitlePosition="lefttop">
+    <uiControl class="groupPanel" BackgroundColor="[0.937 0.937 0.937]" BorderWidth="1" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" Name="loggingSettingsGroupPanel" Position="[27 440 1046 93]" Title="Logging settings" TitlePosition="lefttop">
         <ContainerSrc/>
-        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="analogInputLabel" Position="[255 60 122 19]" String="Analog input pin:" TooltipString=""/>
+        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="analogInputLabel" Position="[465 60 122 19]" String="Analog input pin:" TooltipString=""/>
         <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="minCalibrationLabel" Position="[15 25 111 19]" String="Min calibration:" TooltipString=""/>
         <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="maxCalibrationLabel" Position="[15 60 114 19]" String="Max calibration:" TooltipString=""/>
-        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="analogOutputPinLabel" Position="[250 25 131 19]" String="Analog output pin:" TooltipString=""/>
-        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="sampleTimeLabel" Position="[485 25 130 19]" String="Sample time [ms]:" TooltipString=""/>
-        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="viewSamples" Position="[485 60 104 19]" String="View samples:" TooltipString=""/>
-        <uiControl class="cmbCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Name="analogInputPinComboBox" Position="[390 60 80 25]" String="A0|A1|A2|A3|A4|A5" TooltipString="">global analogInputPin;
+        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="analogOutputPinLabel" Position="[465 30 131 19]" String="Analog output pin:" TooltipString=""/>
+        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="sampleTimeLabel" Position="[695 25 130 19]" String="Sample time [ms]:" TooltipString=""/>
+        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="viewSamples" Position="[695 60 104 19]" String="View samples:" TooltipString=""/>
+        <uiControl class="cmbCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Name="analogInputPinComboBox" Position="[600 60 80 25]" String="A0|A1|A2|A3|A4|A5" TooltipString="">global analogInputPin;
 index = get(mainDlg.analogInputPinComboBox, 'Value');
 analogInputPins = get(mainDlg.analogInputPinComboBox, 'String');
 analogInputPins = strsplit(analogInputPins, '|');
 analogInputPin = analogInputPins{index};</uiControl>
-        <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" HorizontalAlignment="left" Name="minCalibrationEdit" Position="[150 25 80 22]" String="0" TooltipString="">% This code will be executed when the control lost focus and text has 
+        <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" HorizontalAlignment="left" Name="minCalibrationEdit" Position="[140 25 80 22]" String="0" TooltipString="">% This code will be executed when the control lost focus and text has 
 % been changed or when press the &quot;enter&quot; key.
 % As default, all events are deactivated, to activate must set the
 % propertie 'have callback' from the properties editor
 
 global minValueCalibration;
 minValueCalibration = str2num(get(mainDlg.minCalibrationEdit, 'String'));</uiControl>
-        <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" HorizontalAlignment="left" Name="maxCalibrationEdit" Position="[150 60 78 22]" String="1023" TooltipString="">% This code will be executed when the control lost focus and text has 
+        <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" HorizontalAlignment="left" Name="maxCalibrationEdit" Position="[140 60 78 22]" String="10" TooltipString="">% This code will be executed when the control lost focus and text has 
 % been changed or when press the &quot;enter&quot; key.
 % As default, all events are deactivated, to activate must set the
 % propertie 'have callback' from the properties editor
 
 global maxValueCalibration;
 maxValueCalibration = str2num(get(mainDlg.maxCalibrationEdit, 'String'));</uiControl>
-        <uiControl class="cmbCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Name="analogOutputPinComboBox" Position="[390 20 80 25]" String="D11|D10|D9|D6|D5|D3" TooltipString="">global analogOutputPin;
+        <uiControl class="cmbCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Name="analogOutputPinComboBox" Position="[600 20 80 25]" String="D11|D10|D9|D6|D5|D3" TooltipString="">global analogOutputPin;
 index = get(mainDlg.analogOutputPinComboBox, 'Value');
 analogOutputPins = get(mainDlg.analogOutputPinComboBox, 'String');
 analogOutputPins = strsplit(analogOutputPins, '|');
 analogOutputPin = analogOutputPins{index};</uiControl>
-        <uiControl class="cmbCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Name="sampleTimeComboBox" Position="[620 20 80 25]" String="1|5|10|25|50|100|150|250|500|1000|1500|2000|5000|10000" TooltipString="">global sampleTime;
+        <uiControl class="cmbCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Name="sampleTimeComboBox" Position="[830 20 80 25]" String="1|5|10|25|50|100|150|250|500|1000|1500|2000|5000|10000" TooltipString="">global sampleTime;
 index = get(mainDlg.sampleTimeComboBox, 'Value');
 sampleTimes = get(mainDlg.sampleTimeComboBox, 'String');
 sampleTimes = strsplit(sampleTimes, '|');
 sampleTime = str2num(sampleTimes{index});</uiControl>
-        <uiControl class="cmbCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Name="viewSamplesComboBox" Position="[620 55 79 25]" String="10|20|30|40|50|100|250|500|1000" TooltipString="">global viewSamples;
+        <uiControl class="cmbCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Name="viewSamplesComboBox" Position="[830 55 79 25]" String="10|20|30|40|50|100|250|500|1000" TooltipString="">global viewSamples;
 index = get(mainDlg.viewSamplesComboBox, 'Value');
 samples = get(mainDlg.viewSamplesComboBox, 'String');
 samples = strsplit(samples, '|');
 viewSamples = str2num(samples{index});</uiControl>
-        <uiControl class="buttonCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.027 0.976 0.027]" GenerateCallBack="true" Name="stopLogging" Position="[715 15 114 30]" String="Stop logging" TooltipString="">% This code will be executed when user click the button control.
+        <uiControl class="buttonCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.027 0.976 0.027]" GenerateCallBack="true" Name="stopLogging" Position="[925 15 114 30]" String="Stop logging" TooltipString="">% This code will be executed when user click the button control.
 % As default, all events are deactivated, to activate must set the
 % propertie 'generateCallback' from the properties editor
 
@@ -152,7 +152,23 @@ isLogging = 0;
 % Change color
 set(mainDlg.stopLogging, 'ForegroundColor', [0.027 0.976 0.027]);
 set(mainDlg.startLogging, 'ForegroundColor',[0.667 0.000 0.000]);</uiControl>
-        <uiControl class="buttonCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.667 0.000 0.000]" GenerateCallBack="true" Name="startLogging" Position="[715 50 114 30]" String="Start logging" TooltipString="">% This code will be executed when user click the button control.
+        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="Label_10" Position="[230 25 101 19]" String="Min raw ADC:" TooltipString=""/>
+        <uiControl class="textCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="Label_11" Position="[230 60 104 19]" String="Max raw ADC:" TooltipString=""/>
+        <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" HorizontalAlignment="left" Name="minRawADCEdit" Position="[345 25 103 22]" String="0" TooltipString="">% This code will be executed when the control lost focus and text has 
+% been changed or when press the &quot;enter&quot; key.
+% As default, all events are deactivated, to activate must set the
+% propertie 'have callback' from the properties editor
+
+global minValueRawADC;
+minValueRawADC = str2num(get(mainDlg.minRawADCEdit, 'String'));</uiControl>
+        <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" HorizontalAlignment="left" Name="maxRawADCEdit" Position="[345 60 102 22]" String="1023" TooltipString="">% This code will be executed when the control lost focus and text has 
+% been changed or when press the &quot;enter&quot; key.
+% As default, all events are deactivated, to activate must set the
+% propertie 'have callback' from the properties editor
+
+global maxValueRawADC;
+maxValueRawADC = str2num(get(mainDlg.maxRawADCEdit, 'String'));</uiControl>
+        <uiControl class="buttonCtrl" BackgroundColor="[0.941 0.941 0.941]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.667 0.000 0.000]" GenerateCallBack="true" Name="startLogging" Position="[925 50 114 30]" String="Start logging" TooltipString="">% This code will be executed when user click the button control.
 % As default, all events are deactivated, to activate must set the
 % propertie 'generateCallback' from the properties editor
 
@@ -167,6 +183,8 @@ viewSamplesComboBox_doIt(src, data, mainDlg);
 minCalibrationEdit_doIt(src, data, mainDlg);
 maxCalibrationEdit_doIt(src, data, mainDlg);
 analogOutputValueSlider_doIt(src, data, mainDlg);
+maxRawADCEdit_doIt(src, data, mainDlg);
+minRawADCEdit_doIt(src, data, mainDlg);
 global sampleTime;
 global analogInputPin;
 global analogInputPin;
@@ -177,6 +195,8 @@ global filePath;
 global selectedArduino;
 global analogOutputPin;
 global analogOutputValueSlider;
+global maxValueRawADC;
+global minValueRawADC;
 
 % Change color
 set(mainDlg.stopLogging, 'ForegroundColor', [0.667 0.000 0.000]);
@@ -196,7 +216,7 @@ end
 h1 = plot(mainDlg.Image_1, randn(1), randn(1) , '-r');
 hold on
 h2 = plot(mainDlg.Image_1, randn(1), randn(1), '-b');
-legend(mainDlg.Image_1, 'Analog in', 'Analog out');
+legend(mainDlg.Image_1, 'Analog in', 'Analog out', 'Location', 'northwest');
 
 % Initial data for the plot
 analogInPlot =[];
@@ -208,8 +228,8 @@ header = sprintf(&quot;time_stamp,sample_time,analog_in,analog_out\n&quot;);
 fwrite(fid, header);
 
 % Calibrate
-k = (maxValueCalibration - minValueCalibration)/1023.0;
-m = maxValueCalibration - k*1023.0;
+k = (maxValueCalibration - minValueCalibration)/(maxValueRawADC - minValueRawADC);
+m = maxValueCalibration - k*maxValueRawADC;
 
 while (isLogging == 1)
   % Get time stamp
@@ -257,7 +277,7 @@ end
 fclose(fid);</uiControl>
     </uiControl>
     <uiControl class="textCtrl" BackgroundColor="[0.937 0.937 0.937]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="left" isAutoSize="true" Name="analogOutputValue" Position="[30 550 146 19]" String="Analog output value:" TooltipString=""/>
-    <uiControl class="sliderCtrl" BackgroundColor="[0.937 0.937 0.937]" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Max="255" Min="0" Name="analogOutputValueSlider" Position="[184 541 681 32]" TooltipString="" Value="0">% This code will be executed when user change the value of slider.
+    <uiControl class="sliderCtrl" BackgroundColor="[0.937 0.937 0.937]" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="true" Max="255" Min="0" Name="analogOutputValueSlider" Position="[184 541 886 32]" TooltipString="" Value="0">% This code will be executed when user change the value of slider.
 % As default, all events are deactivated, to activate must set the
 % propertie 'generateCallbck' from the properties editor
 
